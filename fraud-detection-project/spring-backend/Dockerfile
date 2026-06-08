@@ -3,7 +3,6 @@ WORKDIR /workspace
 
 # copy maven config first for better caching
 COPY pom.xml mvnw ./
-COPY .mvn .mvn
 COPY src src
 
 RUN mvn -B -DskipTests package
