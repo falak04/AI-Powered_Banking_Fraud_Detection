@@ -1,6 +1,10 @@
 target/
-.m2/
 .mvn/
-.git
-*.log
-*.jar
+.m2/
+.m2-local/
+HELP.md
+*.iml
+.idea/
+.settings/
+.classpath
+.project
