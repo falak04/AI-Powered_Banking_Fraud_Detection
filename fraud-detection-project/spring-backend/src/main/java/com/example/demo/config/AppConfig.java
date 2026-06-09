@@ -19,7 +19,8 @@ public class AppConfig {
 
     @Value("${app.ml.read-timeout:15000}")
     private int readTimeout;
-
+    @Value("${app.cors.allowed-origin-patterns:http://localhost:3000,https://*.vercel.app}")
+    private String[] allowedOriginPatterns;
     @Bean
     public RestTemplate restTemplate(ObjectMapper objectMapper) {
         SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
@@ -41,7 +42,7 @@ public class AppConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/fraud/**")
-                        .allowedOrigins("http://localhost:3000")
+                        .allowedOrigins(allowedOriginPatterns)
                         .allowedMethods("GET", "POST", "OPTIONS")
                         .allowedHeaders("*");
             }
