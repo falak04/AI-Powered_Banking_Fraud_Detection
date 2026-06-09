@@ -1,4 +1,5 @@
-const BASE = process.env.REACT_APP_API_URL || 'http://localhost:8080';
+const BASE =
+  'https://ai-powered-banking-fraud.onrender.com' || 'http://localhost:8080';
 
 async function request(method, path, body) {
   const opts = { method, headers: {} };
@@ -13,13 +14,13 @@ async function request(method, path, body) {
 }
 
 export const api = {
-  health:           ()       => request('GET',  '/fraud/health'),
-  modelInfo:        ()       => request('GET',  '/fraud/model/info'),
-  predictEvent:     (body)   => request('POST', '/fraud/event', body),
-  predictTxn:       (body)   => request('POST', '/fraud/predict/transaction', body),
-  predictLogin:     (body)   => request('POST', '/fraud/predict/login', body),
-  graphRisk:        (uid)    => request('GET',  `/fraud/graph/risk/${uid}`),
-  allGraphRisks:    ()       => request('GET',  '/fraud/graph/risk'),
-  dashboardSnapshot:()       => request('GET',  '/fraud/dashboard/snapshot'),
-  batchPredict:     (list)   => request('POST', '/fraud/batch', list),
+  health: () => request('GET', '/fraud/health'),
+  modelInfo: () => request('GET', '/fraud/model/info'),
+  predictEvent: (body) => request('POST', '/fraud/event', body),
+  predictTxn: (body) => request('POST', '/fraud/predict/transaction', body),
+  predictLogin: (body) => request('POST', '/fraud/predict/login', body),
+  graphRisk: (uid) => request('GET', `/fraud/graph/risk/${uid}`),
+  allGraphRisks: () => request('GET', '/fraud/graph/risk'),
+  dashboardSnapshot: () => request('GET', '/fraud/dashboard/snapshot'),
+  batchPredict: (list) => request('POST', '/fraud/batch', list),
 };
